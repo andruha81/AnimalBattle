@@ -7,6 +7,7 @@ public class Dog extends Animal{
     public Dog(String newName) {
         super(newName);
 
+        this.typeOfAnimal = "Dog";
         setForceAgility();
     }
 

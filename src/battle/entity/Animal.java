@@ -5,6 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public abstract class Animal {
 
     protected String name;
+    String typeOfAnimal;
     protected int force;
     protected int agility;
     protected double endurance = 10.0;
@@ -49,5 +50,10 @@ public abstract class Animal {
 
     public void setHealth(double health) {
         this.health = health;
+    }
+
+    public void printFighter(int fighterNumber) {
+        System.out.println("Fighter " + fighterNumber + " " + typeOfAnimal + " " + name);
+        System.out.println("Force: " + force + ", Agility: " + agility + ", Rate decrease of endurance: " + rateDecreaseEndurance);
     }
 }
