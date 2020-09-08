@@ -11,14 +11,12 @@ public class Combat {
     Animal attacker;
     Animal defender;
 
-    public Animal startCombat(Animal firstFighter, Animal secondFighter){
+    public void startCombat(Animal firstFighter, Animal secondFighter){
         while (winner == null) {
             chooseWhoAttack(firstFighter, secondFighter);
             attack();
             checkWinner();
         }
-
-        return winner;
     }
 
     private void chooseWhoAttack(Animal firstFighter, Animal secondFighter){
@@ -32,6 +30,7 @@ public class Combat {
             }
 
         } else if (checkLuckyAttack()) {
+            System.out.println("Another chance to attack for " + attacker.getName());
             serialAttacks += 1;
 
         } else {
@@ -40,15 +39,29 @@ public class Combat {
             defender = fighter;
             serialAttacks = 1;
         }
+
+        System.out.println("Attacking " + attacker.getName() + ", defending " + defender.getName());
     }
 
     private void attack(){
+        double damage = (attacker.getForce() * attacker.getEndurance()) - (defender.getAgility() * defender.getEndurance());
+        if (damage <=0){
+            damage = 1;
+        }
 
+        System.out.println(defender.getName() + " is damaged by " + damage);
+
+        defender.setHealth(damage);
+        defender.setEndurance();
+        attacker.setEndurance();
+
+        System.out.println(defender.getName() + " health is " + defender.getHealth());
     }
 
     private void checkWinner(){
-        if (defender.getHealth() <= 0) {
+        if (defender.getHealth() == 0) {
             winner = attacker;
+            System.out.println("The winner is " + attacker.getName());
         }
     }
 

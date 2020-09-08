@@ -1,12 +1,18 @@
 package battle;
 
 import battle.entity.*;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
+
+    private static final List<String> fighterNames = Arrays.asList("Rambo","Terminator","Killer","Mad","Dragon","Destroyer","Giant","Titan","Chack Norris","Ninja");
+
+    private static String chooseName(){
+
+        return fighterNames.get(ThreadLocalRandom.current().nextInt(0,fighterNames.size()));
+    }
 
     private static Animal chooseFighter() {
 
@@ -14,16 +20,16 @@ public class Main {
         int randNumberOfFighter = ThreadLocalRandom.current().nextInt(1,4);
 
         switch (randNumberOfFighter) {
-            case 1: randomFighter = new Cat("V");
+            case 1: randomFighter = new Cat(chooseName());
                 break;
 
-            case 2: randomFighter = new Dog("V");
+            case 2: randomFighter = new Dog(chooseName());
                 break;
 
-            case 3: randomFighter = new Monkey("V");
+            case 3: randomFighter = new Monkey(chooseName());
                 break;
 
-            default: randomFighter = new Cat("V");
+            default: randomFighter = new Cat(chooseName());
         }
 
         return randomFighter;
@@ -31,8 +37,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int numberOfCombats = 10;
-        List<String> fighterNames = Arrays.asList("Rambo","Terminator","Killer","Mad","Dragon","Destroyer","Giant");
+        int numberOfCombats = 2;
         Combat combat;
         Animal firtsFighter;
         Animal secondFighter;
@@ -55,9 +60,7 @@ public class Main {
             secondFighter = chooseFighter();
             secondFighter.printFighter(2);
 
-
-
-            //Animal winner = combat.startCombat(firtsFighter, secondFighter);
+            combat.startCombat(firtsFighter, secondFighter);
 
             System.out.println("--------------------------");
 

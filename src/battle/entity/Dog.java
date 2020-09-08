@@ -13,7 +13,7 @@ public class Dog extends Animal{
 
     @Override
     public void setForceAgility() {
-        this.force = ThreadLocalRandom.current().nextInt(5,11);
-        this.agility = ThreadLocalRandom.current().nextInt(1,6);
+        this.force = ThreadLocalRandom.current().nextInt(6,11);
+        this.agility = ThreadLocalRandom.current().nextInt(1,5);
     }
 }
